@@ -3,11 +3,11 @@ import styled from 'styled-components';
 import {getNews} from '../services/headlines';
 import {IoIosShareAlt} from 'react-icons/io';
 import {FiPlus} from 'react-icons/fi';
-
+import Input from './input';
 
 const Div = styled.div`
     .grid-div {
-        padding: 1em;
+        padding: 2em;
         display: grid;
         grid-template-columns: auto auto auto;
         column-gap: 2em;
@@ -37,6 +37,16 @@ const Div = styled.div`
     .headline-img {
         border-radius: 8px;
     }
+    .intro-div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    h1 {
+        font-size: 1.8em;
+        font-weight: 500;
+        color: #091A20;
+    }
     h2 {
         font-size: 1.2em;
         font-weight: 700;
@@ -52,9 +62,6 @@ const SearchBox = () => {
         getNews()
             .then(articles => {
                 if(mounted) {
-                    console.log('====================================');
-                    console.log(articles);
-                    console.log('====================================');
                     setData(articles)
                 }
             })
@@ -64,7 +71,11 @@ const SearchBox = () => {
 
     return (
         <Div>
-        <h1>Search and see what's happening around the world</h1>
+            <div className="intro-div">
+            <h1>Search and see what's happening around the world</h1>
+            <Input />
+            </div>
+    
             <div className="grid-div">
             {data && data.map((article) => {
                 const myDate = new Date(article.publishedAt).toDateString();
