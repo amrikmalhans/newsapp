@@ -3,7 +3,7 @@ require('dotenv').config()
 
 const REACT_APP_API_KEY=process.env.REACT_APP_API_KEY;
 
-const URL = `https://newsapi.org/v2/top-headlines?country=us&category=music&apiKey=${REACT_APP_API_KEY}`;
+const URL = `https://newsapi.org/v2/top-headlines?country=in&apiKey=${REACT_APP_API_KEY}`;
 
 export const getNews = async () => {
     try {
