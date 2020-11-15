@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import {getNews} from '../services/headlines';
 import {IoIosShareAlt} from 'react-icons/io';
 import {FiPlus} from 'react-icons/fi';
-import Input from './input';
 
 const Div = styled.div`
     .grid-div {
@@ -78,8 +77,7 @@ const SearchBox = () => {
     return (
         <Div>
             <div className="intro-div">
-            <h1>Search and see what's happening around the world</h1>
-            <Input />
+            {/* <h1>Search and see what's happening around the world</h1> */}
             </div>
             <h3>Top Headlines</h3>
             <div className="grid-div">
