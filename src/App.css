@@ -4,3 +4,7 @@
     font-family: 'Montserrat', sans-serif;
     background-color: #F2F2F8;
 }
+
+*:focus {
+    outline: 0 !important;
+}

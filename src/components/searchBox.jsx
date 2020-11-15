@@ -52,6 +52,12 @@ const Div = styled.div`
         font-weight: 700;
         color: #091A20;
     }
+    h3 {
+        margin-top: 2em;
+        margin-bottom: 0em;
+        font-size: 2em;
+        text-align: center;
+    }
 `;
 
 const SearchBox = () => {
@@ -75,7 +81,7 @@ const SearchBox = () => {
             <h1>Search and see what's happening around the world</h1>
             <Input />
             </div>
-    
+            <h3>Top Headlines</h3>
             <div className="grid-div">
             {data && data.map((article) => {
                 const myDate = new Date(article.publishedAt).toDateString();
