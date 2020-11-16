@@ -35,6 +35,8 @@ const Div = styled.div`
     }
     .headline-img {
         border-radius: 8px;
+        width: 100%;
+        height: 200px;
     }
     .intro-div {
         display: flex;
@@ -57,6 +59,59 @@ const Div = styled.div`
         font-size: 2em;
         text-align: center;
     }
+    @media only screen and (max-width: 600px) {
+        .grid-div {
+        padding: 1em;
+        display: grid;
+        grid-template-columns: auto;
+        column-gap: 2em;
+        row-gap: 2em;
+    }
+    .grid-card {
+        background-color: white;
+        padding: 0.5em;
+        border-radius: 8px;
+    }
+    .info-div {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 0.8em;
+    }
+    .author {
+        font-size: 0.7em;
+        font-weight: 500;
+    }
+    .publishedAt {
+        font-size: 0.6em;
+    }
+    .headline-img {
+        border-radius: 8px;
+        width: 100%;
+        height: auto;
+    }
+
+    .intro-div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    h1 {
+        font-size: 1.8em;
+        font-weight: 500;
+        color: #091A20;
+    }
+    h2 {
+        font-size: 1.2em;
+        font-weight: 700;
+        color: #091A20;
+    }
+    h3 {
+        margin-top: 1.3em;
+        margin-bottom: 0.5em;
+        font-size: 1.8em;
+        text-align: center;
+    }
+}
 `;
 
 const SearchBox = () => {
@@ -86,7 +141,7 @@ const SearchBox = () => {
                 return (
                 <div className="grid-card" key={article.title}>
                    
-                    <img className="headline-img" src={article.urlToImage} alt={article.title} width="100%" height="200em" />
+                    <img className="headline-img" src={article.urlToImage} alt={article.title} />
                     <h2>{article.title}</h2>
                     {/* <p>{article.description}</p> */}
                     <div className="flex-div">
