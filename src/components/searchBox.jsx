@@ -124,7 +124,7 @@ const SearchBox = ({data}) => {
             <div className="grid-div">
             {data && data.map((article) => {
                 const myDate = new Date(article.publishedAt).toDateString();
-                const myLink = "article.title.toString()";
+                const myLink = `${encodeURIComponent(article.title)}`;
                 console.log('====================================');
                 console.log(article.title);
                 console.log('====================================');
@@ -132,7 +132,7 @@ const SearchBox = ({data}) => {
                 <div className="grid-card" key={article.title}>
                    
                    <Link style={{textDecoration: 'none'}} to="/mao"><img className="headline-img" src={article.urlToImage} alt={article.title} /></Link>
-                    <Link style={{textDecoration: 'none'}} to={`/${myLink}`} ><h2>{article.title}</h2></Link>
+                    <Link style={{textDecoration: 'none'}} to={myLink} ><h2>{article.title}</h2></Link>
                     {/* <p>{article.description}</p> */}
                     <div className="flex-div">
                         <div className="info-div">
