@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import {getNews} from '../services/headlines';
 import {IoIosShareAlt} from 'react-icons/io';
 import {FiPlus} from 'react-icons/fi';
-
+import { Link } from "react-router-dom";
 const Div = styled.div`
     .grid-div {
         padding: 2em;
@@ -111,24 +110,11 @@ const Div = styled.div`
         font-size: 1.8em;
         text-align: center;
     }
-}
+}   
 `;
 
-const SearchBox = () => {
-    const [data, setData] = useState([]);
-
-    useEffect(() => {
-        let mounted = true;
-        getNews()
-            .then(articles => {
-                if(mounted) {
-                    setData(articles)
-                }
-            })
-            return () => mounted = false;
-    }, [])
-
-
+const SearchBox = ({data}) => {
+    
     return (
         <Div>
             <div className="intro-div">
@@ -138,11 +124,15 @@ const SearchBox = () => {
             <div className="grid-div">
             {data && data.map((article) => {
                 const myDate = new Date(article.publishedAt).toDateString();
+                const myLink = `${encodeURIComponent(article.title)}`;
+                console.log('====================================');
+                console.log(article.title);
+                console.log('====================================');
                 return (
                 <div className="grid-card" key={article.title}>
                    
-                    <img className="headline-img" src={article.urlToImage} alt={article.title} />
-                    <h2>{article.title}</h2>
+                   <Link style={{textDecoration: 'none'}} to="/mao"><img className="headline-img" src={article.urlToImage} alt={article.title} /></Link>
+                    <Link style={{textDecoration: 'none'}} to={myLink} ><h2>{article.title}</h2></Link>
                     {/* <p>{article.description}</p> */}
                     <div className="flex-div">
                         <div className="info-div">

@@ -9,6 +9,9 @@ export const getNews = async () => {
     try {
         const response = await axios.get(URL);
         const articles = response.data.articles;
+        console.log('====================================');
+        console.log(articles);
+        console.log('====================================');
         return articles;
     } catch (err) {
         console.log(err);
