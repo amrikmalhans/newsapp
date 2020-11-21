@@ -8,7 +8,11 @@ import {getNews} from './services/headlines';
 
 function App() {
   const [data, setData] = useState([]);
-
+  const [headlineData, setHeadlineData] =useState(null);
+  
+  const handleClick = (stuff) => {
+    setHeadlineData(stuff)
+  }
     useEffect(() => {
         let mounted = true;
         getNews()
@@ -20,15 +24,22 @@ function App() {
             return () => mounted = false;
     }, [])
 
-
+    
   return (
     <div className="App">
       <Switch>
         <Route exact path='/'> 
           <Navbar/>
-          <SearchBox data={data} />
+          <SearchBox
+           handler={handleClick}
+           data={data} 
+           />
         </Route>
-        <Route exact path='/mao' component={Headline} />
+        <Route  path="/headline">
+          <Headline 
+           headlineData={headlineData}
+          />
+        </Route>
      </Switch>
     </div>
   );

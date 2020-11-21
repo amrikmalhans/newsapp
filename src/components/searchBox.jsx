@@ -113,7 +113,7 @@ const Div = styled.div`
 }   
 `;
 
-const SearchBox = ({data}) => {
+const SearchBox = ({data, handler}) => {
     
     return (
         <Div>
@@ -123,16 +123,19 @@ const SearchBox = ({data}) => {
             <h3>Top Headlines</h3>
             <div className="grid-div">
             {data && data.map((article) => {
+                const sendData = () => {
+                    handler(article)
+                }
                 const myDate = new Date(article.publishedAt).toDateString();
                 const myLink = `${encodeURIComponent(article.title)}`;
                 console.log('====================================');
-                console.log(article.title);
+                console.log(article);
                 console.log('====================================');
                 return (
                 <div className="grid-card" key={article.title}>
                    
                    <Link style={{textDecoration: 'none'}} to="/mao"><img className="headline-img" src={article.urlToImage} alt={article.title} /></Link>
-                    <Link style={{textDecoration: 'none'}} to={myLink} ><h2>{article.title}</h2></Link>
+                    <Link style={{textDecoration: 'none'}} to={`/headline/${myLink}`} onClick={sendData}><h2>{article.title}</h2></Link>
                     {/* <p>{article.description}</p> */}
                     <div className="flex-div">
                         <div className="info-div">

@@ -5,10 +5,10 @@ const StyledDiv = styled.div`
     
 `;
 
-const Headline = () => {
+const Headline = ({headlineData}) => {
     return (
         <StyledDiv>
-            Helooo
+           {headlineData.title}
         </StyledDiv>
     )
 }
