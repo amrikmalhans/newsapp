@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import {IoIosShareAlt} from 'react-icons/io';
 import {FiPlus} from 'react-icons/fi';
-import { Link } from "react-router-dom";
 const Div = styled.div`
     .grid-div {
         padding: 2em;
@@ -57,6 +56,9 @@ const Div = styled.div`
         margin-bottom: 0em;
         font-size: 2em;
         text-align: center;
+    }
+    a {
+        text-decoration: none;
     }
     @media only screen and (max-width: 600px) {
         .grid-div {
@@ -113,7 +115,7 @@ const Div = styled.div`
 }   
 `;
 
-const SearchBox = ({data, handler}) => {
+const SearchBox = ({data}) => {
     
     return (
         <Div>
@@ -123,19 +125,19 @@ const SearchBox = ({data, handler}) => {
             <h3>Top Headlines</h3>
             <div className="grid-div">
             {data && data.map((article) => {
-                const sendData = () => {
-                    handler(article)
-                }
+                // const sendData = () => {
+                //     handler(article)
+                // }
                 const myDate = new Date(article.publishedAt).toDateString();
-                const myLink = `${encodeURIComponent(article.title)}`;
+                // const myLink = `${encodeURIComponent(article.url)}`;
                 console.log('====================================');
                 console.log(article);
                 console.log('====================================');
                 return (
                 <div className="grid-card" key={article.title}>
                    
-                   <Link style={{textDecoration: 'none'}} to="/mao"><img className="headline-img" src={article.urlToImage} alt={article.title} /></Link>
-                    <Link style={{textDecoration: 'none'}} to={`/headline/${myLink}`} onClick={sendData}><h2>{article.title}</h2></Link>
+                   <a rel="noreferrer" target="_blank" href={article.url}><img className="headline-img" src={article.urlToImage} alt={article.title} /></a>
+                    <a rel="noreferrer" target="_blank" href={article.url}><h2>{article.title}</h2></a>
                     {/* <p>{article.description}</p> */}
                     <div className="flex-div">
                         <div className="info-div">

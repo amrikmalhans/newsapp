@@ -8,36 +8,39 @@ import {getNews} from './services/headlines';
 
 function App() {
   const [data, setData] = useState([]);
-  const [headlineData, setHeadlineData] =useState(null);
-  
-  const handleClick = (stuff) => {
-    setHeadlineData(stuff)
+  const [searchValue, setSearchValue] = useState("coding");
+
+  const handleFormSubmit = (val) => {
+    setSearchValue(val)
   }
+
     useEffect(() => {
         let mounted = true;
-        getNews()
+        getNews(searchValue)
             .then(articles => {
                 if(mounted) {
                     setData(articles)
                 }
             })
             return () => mounted = false;
-    }, [])
+    }, [searchValue])
 
     
   return (
     <div className="App">
       <Switch>
         <Route exact path='/'> 
-          <Navbar/>
+          <Navbar
+            handleFormSubmit={handleFormSubmit}
+            search={searchValue}
+          />
           <SearchBox
-           handler={handleClick}
            data={data} 
+           searchValue={searchValue}
            />
         </Route>
         <Route  path="/headline">
           <Headline 
-           headlineData={headlineData}
           />
         </Route>
      </Switch>

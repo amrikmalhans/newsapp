@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from "styled-components";
 import { BiSearchAlt } from "react-icons/bi";
+
 const StyledInput = styled.div`
     background-color: white;
     display: flex;
@@ -21,11 +22,21 @@ const StyledInput = styled.div`
     }
 `;
 
-const Input = () => {
+const Input = ({handleFormSubmit}) => {
+
+    const [inputValue, setInputValue] = useState(null);
+    const handleChange = (e) => {
+        setInputValue(e.target.value)
+    }
+    const handleSubmit = () => {
+        handleFormSubmit(inputValue);
+        setInputValue("");
+    }
+
     return (
         <StyledInput>
-            <input className="input" placeholder="search" />
-            <BiSearchAlt size="2em" />
+            <input value={inputValue} onSubmit={handleSubmit} onChange={handleChange} className="input" placeholder="search" />
+            <BiSearchAlt onClick={handleSubmit} style={{cursor:' pointer'}} size="2em" />
         </StyledInput>
     )
 }

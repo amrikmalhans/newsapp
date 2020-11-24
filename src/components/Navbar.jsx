@@ -36,7 +36,7 @@ const StyledNavbar = styled.nav`
 
 `
 
-const Navbar = () => {
+const Navbar = ({handleFormSubmit}) => {
     const title = 'Code Geeks </>'
     return (
         <StyledNavbar>
@@ -45,10 +45,11 @@ const Navbar = () => {
              <h2>{title}</h2>
             </div>
             <div className="input-div">
-            <Input />
+            <Input 
+                handleFormSubmit={handleFormSubmit}
+            />
             </div>
             
-
         </StyledNavbar>
     )
 }

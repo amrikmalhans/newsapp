@@ -8,7 +8,8 @@ const StyledDiv = styled.div`
 const Headline = ({headlineData}) => {
     return (
         <StyledDiv>
-           {headlineData.title}
+           <h1>{headlineData.title}</h1>
+           <p>{headlineData.content}</p>
         </StyledDiv>
     )
 }
