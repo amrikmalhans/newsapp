@@ -115,14 +115,14 @@ const Div = styled.div`
 }   
 `;
 
-const SearchBox = ({data}) => {
+const SearchBox = ({data, searchValue}) => {
     
     return (
         <Div>
             <div className="intro-div">
             {/* <h1>Search and see what's happening around the world</h1> */}
             </div>
-            <h3>Top Headlines</h3>
+            <h3>{searchValue === "coding" ? "Top Headlines" : `Search results for '${searchValue}'`}</h3>
             <div className="grid-div">
             {data && data.map((article) => {
                 // const sendData = () => {
