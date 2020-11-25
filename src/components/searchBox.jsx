@@ -130,9 +130,9 @@ const SearchBox = ({data, searchValue}) => {
                 // }
                 const myDate = new Date(article.publishedAt).toDateString();
                 // const myLink = `${encodeURIComponent(article.url)}`;
-                console.log('====================================');
+                console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
                 console.log(article);
-                console.log('====================================');
+                console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
                 return (
                 <div className="grid-card" key={article.title}>
                    

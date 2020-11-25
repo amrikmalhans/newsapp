@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import Headline from './components/Headline';
 import { Switch, Route } from "react-router-dom";
 import {getNews} from './services/headlines';
+import Banner from './components/Banner';
 
 function App() {
   const [data, setData] = useState([]);
@@ -34,6 +35,7 @@ function App() {
             handleFormSubmit={handleFormSubmit}
             search={searchValue}
           />
+          <Banner />
           <SearchBox
            data={data} 
            searchValue={searchValue}
