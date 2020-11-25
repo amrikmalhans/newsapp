@@ -24,7 +24,7 @@ const StyledInput = styled.div`
 
 const Input = ({handleFormSubmit}) => {
 
-    const [inputValue, setInputValue] = useState(null);
+    const [inputValue, setInputValue] = useState("");
     const handleChange = (e) => {
         setInputValue(e.target.value)
     }
