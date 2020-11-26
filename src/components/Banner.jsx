@@ -38,7 +38,7 @@ const StyledBanner = styled.div`
 
 const Banner = ({sources, handleSourceClick}) => {
     const [data, setData] = useState([]);
-    const [source, setSource] = useState("");
+    const [source, setSource] = useState([]);
 
     useEffect(() => {
         let mounted = true;
@@ -53,12 +53,15 @@ const Banner = ({sources, handleSourceClick}) => {
 
     return (
         <StyledBanner>
-            {sources.map(source => {
+            {sources.map(sources => {
                 const handleClick = () => {
-                    setSource(source.link)
+                    setSource(source => [...source, sources.link])
+                    console.log('====================================');
+                    console.log(source);
+                    console.log('====================================');
                     handleSourceClick(data);
                 }
-                return <div key={source.id} onClick={handleClick} className="source">{source.name}</div>
+                return <div key={sources.id} onClick={handleClick} className="source">{sources.name}</div>
             })}
             <button>Add <GrAdd /></button>
         </StyledBanner>
