@@ -13,9 +13,9 @@ export const getNews = async (q) => {
                  }}
             );
         const articles = response.data.articles;
-        console.log('====================================');
-        console.log(articles);
-        console.log('====================================');
+        // console.log('====================================');
+        // console.log(articles);
+        // console.log('====================================');
         return articles;
     } catch (err) {
         console.log(err);
@@ -31,9 +31,9 @@ export const getSources = async (source) => {
                  }}
             );
         const sourcesData = response.data;
-        console.log('====================================');
-        console.log(sourcesData);
-        console.log('====================================');
+        // console.log('====================================');
+        // console.log(sourcesData);
+        // console.log('====================================');
         return sourcesData;
     } catch (err) {
         console.log(err);

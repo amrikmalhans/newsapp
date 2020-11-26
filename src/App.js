@@ -27,6 +27,10 @@ function App() {
             return () => mounted = false;
     }, [searchValue])
 
+    const handleSourceClick = (sourceData) => {
+      console.log(sourceData);
+        setData(sourceData.articles)
+    }
     
   return (
     <div className="App">
@@ -38,6 +42,7 @@ function App() {
           />
           <Banner 
            sources={sources}
+           handleSourceClick={handleSourceClick}
           />
           <SearchBox
            data={data} 

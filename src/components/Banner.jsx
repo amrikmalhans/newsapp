@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import {GrAdd} from 'react-icons/gr';
+import {getSources} from '../services/headlines';
 
 const StyledBanner = styled.div`
     display: flex;
@@ -35,11 +36,29 @@ const StyledBanner = styled.div`
     }
 `;
 
-const Banner = ({sources}) => {
+const Banner = ({sources, handleSourceClick}) => {
+    const [data, setData] = useState([]);
+    const [source, setSource] = useState("");
+
+    useEffect(() => {
+        let mounted = true;
+        getSources(source)
+            .then(articles => {
+                if(mounted) {
+                    setData(articles)
+                }
+            })
+            return () => mounted = false;
+    }, [source])
+
     return (
         <StyledBanner>
             {sources.map(source => {
-                return <div className="source">{source.name}</div>
+                const handleClick = () => {
+                    setSource(source.link)
+                    handleSourceClick(data);
+                }
+                return <div key={source.id} onClick={handleClick} className="source">{source.name}</div>
             })}
             <button>Add <GrAdd /></button>
         </StyledBanner>

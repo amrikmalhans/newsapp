@@ -1,26 +1,32 @@
 export const sources = [
     {
         name: 'Dev.to',
-        link: 'https://dev.to/'
+        link: 'dev.to',
+        id: '1'
     },
     {
         name: 'Sitepoint',
-        link: 'https://www.sitepoint.com/'
+        link: 'sitepoint.com',
+        id: '2'
     },
     {
         name: 'Smashing Magazine',
-        link: 'https://www.smashingmagazine.com/'
+        link: 'smashingmagazine.com',
+        id: '3'
     },
     {
         name: 'CSS Tricks',
-        link: 'https://css-tricks.com/'
+        link: 'css-tricks.com',
+        id: '4'
     },
     {
         name: 'Hacker News',
-        link: 'https://news.ycombinator.com/'
+        link: 'ycombinator.com',
+        id: '5'
     },
     {
         name: 'Hacker Noon',
-        link: 'https://hackernoon.com/'
+        link: 'hackernoon.com',
+        id: '6'
     },
 ]
