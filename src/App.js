@@ -28,8 +28,7 @@ function App() {
     }, [searchValue])
 
     const handleSourceClick = (sourceData) => {
-      console.log(sourceData);
-        setData(sourceData.articles)
+        sourceData === undefined ? console.log("nothing found") : setData(sourceData.articles);
     }
     
   return (
