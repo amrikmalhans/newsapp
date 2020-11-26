@@ -122,7 +122,7 @@ const SearchBox = ({data, searchValue}) => {
             <div className="intro-div">
             {/* <h1>Search and see what's happening around the world</h1> */}
             </div>
-            <h3>{searchValue === "coding" ? "Top Headlines" : `Search results for '${searchValue}'`}</h3>
+            <h3>{searchValue === "coding" ? "Top Headlines & Articles" : `Search results for '${searchValue}'`}</h3>
             <div className="grid-div">
             {data && data.map((article) => {
                 // const sendData = () => {
