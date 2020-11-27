@@ -11,6 +11,11 @@ import { sources } from './sources';
 function App() {
   const [data, setData] = useState([]);
   const [searchValue, setSearchValue] = useState("coding");
+  const [className, setClassName] = useState("source");
+
+  const handleClass = (className) => {
+    setClassName(className)
+  }
 
   const handleFormSubmit = (val) => {
     setSearchValue(val)
@@ -42,6 +47,8 @@ function App() {
           <Banner 
            sources={sources}
            handleSourceClick={handleSourceClick}
+           className={className}
+           handleClass={handleClass}
           />
           <SearchBox
            data={data} 

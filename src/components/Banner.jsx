@@ -22,6 +22,15 @@ const StyledBanner = styled.div`
     .source:last-child {
         margin-right: 0;
     }
+
+    .selected {
+        margin-right: 2.5em;
+        font-weight: 600;
+        background-color: #c3c3c3;
+        padding: 0.4em;
+        border-radius: 4px;
+        cursor: pointer;
+    }
     button {
         background-color: #fbfbfb;
         border: none;
@@ -39,6 +48,7 @@ const StyledBanner = styled.div`
 const Banner = ({sources, handleSourceClick}) => {
     const [data, setData] = useState([]);
     const [source, setSource] = useState([]);
+    const [selectedItem, setSelectedItem] = useState([]);
 
     useEffect(() => {
         let mounted = true;
@@ -53,15 +63,14 @@ const Banner = ({sources, handleSourceClick}) => {
 
     return (
         <StyledBanner>
-            {sources.map(sources => {
-                const handleClick = () => {
+            {sources.map((sources, i) => {
+                const handleClick = (itemClicked) => {
+                    setSelectedItem(selectedItem => [...selectedItem, itemClicked]);
+                    console.log(selectedItem);
                     setSource(source => [...source, sources.link])
-                    console.log('====================================');
-                    console.log(source);
-                    console.log('====================================');
                     handleSourceClick(data);
                 }
-                return <div key={sources.id} onClick={handleClick} className="source">{sources.name}</div>
+                return <div key={i} onClick={() => {handleClick(i);}} className={selectedItem.includes(i) ? 'selected' : 'source'}>{sources.name}</div>
             })}
             <button>Add <GrAdd /></button>
         </StyledBanner>
