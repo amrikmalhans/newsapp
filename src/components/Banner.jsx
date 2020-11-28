@@ -26,10 +26,11 @@ const StyledBanner = styled.div`
     .selected {
         margin-right: 2.5em;
         font-weight: 600;
-        background-color: #c3c3c3;
+        background-color: #d6d6d6;
         padding: 0.4em;
         border-radius: 4px;
         cursor: pointer;
+        transition: 0.2s all;
     }
     button {
         background-color: #fbfbfb;
@@ -61,16 +62,28 @@ const Banner = ({sources, handleSourceClick}) => {
             return () => mounted = false;
     }, [source])
 
+    const handleDoThis = (i, sources) => {
+        if (selectedItem.includes(i)) {
+            setSelectedItem(selectedItem.filter(e => e !== i))
+            console.log(selectedItem);
+        } 
+
+        if (source.includes(sources.link)) {
+            setSource(source.filter(e => e !== sources.link))
+            console.log(source);
+        }
+    }
+
     return (
         <StyledBanner>
             {sources.map((sources, i) => {
                 const handleClick = (itemClicked) => {
-                    setSelectedItem(selectedItem => [...selectedItem, itemClicked]);
-                    console.log(selectedItem);
-                    setSource(source => [...source, sources.link])
-                    handleSourceClick(data);
+                        setSelectedItem(selectedItem => [...selectedItem, itemClicked]);
+                        console.log(selectedItem);
+                        setSource(source => [...source, sources.link])
+                        handleSourceClick(data);   
                 }
-                return <div key={i} onClick={() => {handleClick(i);}} className={selectedItem.includes(i) ? 'selected' : 'source'}>{sources.name}</div>
+                return <div key={i} onClick={() => {handleClick(i); handleDoThis(i, sources);}} className={selectedItem.includes(i) ? 'selected' : 'source'}>{sources.name}</div>
             })}
             <button>Add <GrAdd /></button>
         </StyledBanner>
