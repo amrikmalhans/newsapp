@@ -19,11 +19,11 @@ export const sources = [
         link: 'css-tricks.com',
         id: '4'
     },
-    {
-        name: 'Hacker News',
-        link: 'ycombinator.com',
-        id: '5'
-    },
+    // {
+    //     name: 'Hacker News',
+    //     link: 'ycombinator.com',
+    //     id: '5'
+    // },
     {
         name: 'Hacker Noon',
         link: 'hackernoon.com',
