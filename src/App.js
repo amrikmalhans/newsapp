@@ -7,7 +7,9 @@ import { Switch, Route } from "react-router-dom";
 import {getNews} from './services/headlines';
 import Banner from './components/Banner';
 import { sources } from './sources';
- 
+
+import firebase from './firebase';
+
 function App() {
   const [data, setData] = useState([]);
   const [searchValue, setSearchValue] = useState("coding");
@@ -22,19 +24,20 @@ function App() {
   }
 
     useEffect(() => {
-        let mounted = true;
-        getNews(searchValue)
-            .then(articles => {
-                if(mounted) {
-                    setData(articles)
-                }
-            })
-            return () => mounted = false;
-    }, [searchValue])
+        const fetchData =  () => {
+          const db = firebase.firestore()
+          const data = db.collection("headlines").doc('coding')
+          data.get().then(doc => {
+           setData(doc.data().articles)
+          })
+        }
+        fetchData();
+    }, [])
 
     const handleSourceClick = (sourceData) => {
         sourceData === undefined ? console.error("nothing found") : setData(sourceData.articles);
     }
+    
     
   return (
     <div className="App">

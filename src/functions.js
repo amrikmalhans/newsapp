@@ -1,9 +1,8 @@
 const admin = require('firebase-admin');
-const serviceAccount = require('../serviceaccount.json');
+const serviceAccount = require('./serviceaccount.json');
 const NewsAPI = require('newsapi');
 require('dotenv').config()
 const newsapi = new NewsAPI(process.env.REACT_APP_API_KEY);
-
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
