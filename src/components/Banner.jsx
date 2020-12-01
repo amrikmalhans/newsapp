@@ -90,7 +90,7 @@ const StyledBanner = styled.div`
         .selected {
             margin-right: 2.5em;
             font-weight: 600;
-            background-color: #d6d6d6;
+            background-color: #ff8a8a;
             padding: 0.4em;
             border-radius: 4px;
             cursor: pointer;
