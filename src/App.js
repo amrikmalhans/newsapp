@@ -4,7 +4,6 @@ import SearchBox from './components/searchBox';
 import Navbar from './components/Navbar';
 import Headline from './components/Headline';
 import { Switch, Route } from "react-router-dom";
-import {getNews} from './services/headlines';
 import Banner from './components/Banner';
 import { sources } from './sources';
 
