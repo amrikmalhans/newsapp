@@ -6,6 +6,7 @@ import Headline from './components/Headline';
 import { Switch, Route } from "react-router-dom";
 import Banner from './components/Banner';
 import { sources } from './sources';
+import SignUp from './components/signUp';
 
 import firebase from './firebase';
 
@@ -57,9 +58,12 @@ function App() {
            searchValue={searchValue}
            />
         </Route>
-        <Route  path="/headline">
+        <Route path="/headline">
           <Headline 
           />
+        </Route>
+        <Route path="/signup" exact>
+          <SignUp />
         </Route>
      </Switch>
     </div>
